@@ -22,7 +22,7 @@
 // }, 1000);
 
 //import react into the bundle
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 
 //include bootstrap npm library into the bundle
@@ -55,9 +55,9 @@ let counter = setInterval(() => {
 }, 1000);
 
 function myStopFunction() {
-	return clearInterval(counter);
+	clearInterval(counter);
 }
 
-let zero = 0;
-
-let myResetFunction = () => {};
+let myResetFunction = () => {
+	clearInterval(counter);
+};

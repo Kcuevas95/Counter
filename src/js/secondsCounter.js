@@ -91,7 +91,7 @@
 // 	seconds: PropTypes.number
 // };
 
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "../styles/index.scss";
 
@@ -115,7 +115,12 @@ export function SecondsCounter(props) {
 				</div>
 			</div>
 			<div className="buttons pt-4">
-				<button onClick={props.stopButton}>Stop</button>
+				{props.running && (
+					<button onClick={props.stopButton}>Stop</button>
+				)}
+				{!props.running && (
+					<button onClick={props.startButton}>Start</button>
+				)}
 				<button onClick={props.resetButton}>Reset</button>
 			</div>
 		</div>
@@ -124,5 +129,7 @@ export function SecondsCounter(props) {
 SecondsCounter.propTypes = {
 	seconds: PropTypes.number,
 	stopButton: PropTypes.func,
-	resetButton: PropTypes.func
+	startButton: PropTypes.func,
+	resetButton: PropTypes.func,
+	running: PropTypes.bool
 };
